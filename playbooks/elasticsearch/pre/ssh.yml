@@ -1,0 +1,34 @@
+---
+
+- name: generate SSH key
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  pre_tasks:
+  - name: get info on a service account
+    gcp_iam_service_account_info:
+      project: "{{ lookup('env','GCLOUD_PROJECT') }}"
+      auth_kind: serviceaccount
+    register: gcp_sa
+
+  - name: Get Ansible service account ID
+    set_fact:
+      ansible_sa_id: "{{ gcp_sa.resources | json_query(query) | first }}"
+    vars:
+      query: "[?displayName=='github-actions'].uniqueId"
+
+  tasks:
+  - name: generate SSH key "{{ ssh_privkey_name }}"
+    openssh_keypair:
+      path: "{{ ssh_files_path }}/{{ ssh_privkey_name }}"
+      type: rsa
+      size: 4096
+      state: present
+      force: yes
+
+  - name: Generate SSH config
+    template:
+      src: "{{ playbook_dir }}/../../../templates/ssh_config.j2"
+      dest: "{{ ssh_files_path }}/{{ ssh_config_name }}"
+      mode: 0644

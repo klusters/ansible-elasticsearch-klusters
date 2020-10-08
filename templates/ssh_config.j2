@@ -1,0 +1,11 @@
+host {{ jump_host_name }}
+  Hostname {{ jump_host_public_ip }}
+
+host *
+  ProxyCommand ssh -W %h:%p {{ ansible_ssh_common_args }} {{ jump_host_name }}
+  User sa_{{ ansible_sa_id }}
+  IdentityFile {{ ssh_files_path }}/{{ ssh_privkey_name }}
+  ControlMaster auto
+  ControlPath ~/.ssh/%r@%h:%p
+  ControlPersist 5m
+  StrictHostKeyChecking no

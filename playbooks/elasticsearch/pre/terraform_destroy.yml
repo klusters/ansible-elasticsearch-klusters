@@ -1,0 +1,24 @@
+---
+- name: Terraform destroy
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    terraform_dir: "{{ playbook_dir }}/../terraform"
+
+  pre_tasks:
+  - name: Get Terraform scripts
+    git:
+      repo: 'https://github.com/klusters/terraform-gcp-infra'
+      dest: '{{ terraform_dir }}'
+      version: 'main'
+
+  tasks:
+  - name: Terraform destroy
+    terraform:
+      # binary_path: "{{ lookup('env','TERRAFORM_CLI_PATH') + '/terraform-bin' }}"
+      force_init: yes
+      project_path: '{{ terraform_dir }}'
+      workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | d('default') }}"
+      state: absent

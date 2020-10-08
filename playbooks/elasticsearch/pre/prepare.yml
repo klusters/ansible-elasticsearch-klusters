@@ -1,0 +1,23 @@
+---
+
+- name: GCP-related configurations
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Generate GCP dynamic inventory file
+    template:
+      src: "{{ playbook_dir }}/../../../templates/gce_instances.gcp.yml.j2"
+      dest: "{{ playbook_dir }}/../../../inventories/{{ target_env }}/gce_instances.gcp.yml"
+      mode: 0644
+
+  - name: Refresh inventory
+    meta: refresh_inventory
+
+  - name: Install gce dependency on controlling host (virtualenv)
+    pip:
+      name:
+      - google-auth
+      - jmespath
+    delegate_to: 127.0.0.1
