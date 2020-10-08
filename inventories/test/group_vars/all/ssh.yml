@@ -1,6 +1,6 @@
 ---
 
-ssh_files_path: "~/.ssh"
+ssh_files_path: "{{ lookup('env','HOME') }}/.ssh"
 
 ssh_privkey_name: "{{ lookup('env','GCLOUD_PROJECT') }}_ansible_sa"
 ssh_publkey_name: "{{ lookup('env','GCLOUD_PROJECT') }}_ansible_sa.pub"

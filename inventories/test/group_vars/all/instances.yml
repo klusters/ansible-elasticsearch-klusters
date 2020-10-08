@@ -1,0 +1,120 @@
+---
+
+instances:
+  jump:
+    additional_disks: []
+    source_image_family: ubuntu-minimal-2004-lts
+    source_image_project: ubuntu-os-cloud
+    disk_size_gb: 10
+    instance_name: es-jump
+    machine_type: f1-micro
+    network: default
+    region: europe-west1
+    subnetwork: subnet-01
+    count: 1
+    labels:
+      createdby: iac
+      app: elasticsearch
+      environment: test
+      role: jump
+    access_config:
+    - nat_ip: 
+      network_tier: PREMIUM
+    tags:
+    - ssh-front
+
+  master:
+    additional_disks:
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    source_image_family: centos-7
+    source_image_project: centos-cloud
+    disk_size_gb: 20
+    instance_name: es-master
+    machine_type: f1-micro
+    network: default
+    region: europe-west1
+    subnetwork: subnet-02
+    count: 1
+    labels:
+      createdby: iac
+      app: elasticsearch
+      environment: test
+      role: master
+    access_config: []
+    tags:
+    - ssh-back
+
+  coordinator:
+    additional_disks:
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    source_image_family: centos-7
+    source_image_project: centos-cloud
+    disk_size_gb: 20
+    instance_name: es-coordinator
+    machine_type: f1-micro
+    network: default
+    region: europe-west1
+    subnetwork: subnet-02
+    count: 1
+    labels:
+      createdby: iac
+      app: elasticsearch
+      environment: test
+      role: coordinator
+    access_config: []
+    tags:
+    - ssh-back
+
+  data:
+    additional_disks:
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    - auto_delete: true
+      boot: false
+      disk_size_gb: 1
+      disk_type: pd-standard
+    source_image_family: centos-7
+    source_image_project: centos-cloud
+    disk_size_gb: 20
+    instance_name: es-data
+    machine_type: f1-micro
+    network: default
+    region: europe-west1
+    subnetwork: subnet-02
+    count: 1
+    labels:
+      createdby: iac
+      app: elasticsearch
+      environment: test
+      role: data
+    access_config: []
+    tags:
+    - ssh-back

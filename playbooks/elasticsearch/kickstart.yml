@@ -1,0 +1,7 @@
+---
+
+- import_playbook: pre/terraform_apply.yml
+- import_playbook: pre/prepare.yml
+- import_playbook: pre/ssh.yml
+
+- import_playbook: post/terraform_destroy.yml

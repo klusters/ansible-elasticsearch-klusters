@@ -1,11 +1,12 @@
 ---
-- name: Terraform destroy
+
+- name: Terraform Apply
   hosts: localhost
   connection: local
   gather_facts: no
 
   vars:
-    terraform_dir: "{{ playbook_dir }}/../terraform"
+    terraform_dir: "{{ playbook_dir }}/../../../../terraform"
 
   pre_tasks:
   - name: Get Terraform scripts
@@ -14,11 +15,27 @@
       dest: '{{ terraform_dir }}'
       version: 'main'
 
+  - name: Generate Terraform vars
+    template:
+      src: "{{ playbook_dir }}/../../../templates/tfvars.json.j2"
+      dest: '{{ terraform_dir }}/terraform.tfvars.json'
+      mode: 0644
+
+  - name: Generate SSH key
+    openssh_keypair:
+      path: "{{ ssh_files_path }}/{{ ssh_privkey_name }}"
+      type: rsa
+      size: 4096
+      state: present
+      force: yes
+
   tasks:
-  - name: Terraform destroy
+  - name: Terraform Apply
     terraform:
       # binary_path: "{{ lookup('env','TERRAFORM_CLI_PATH') + '/terraform-bin' }}"
       force_init: yes
       project_path: '{{ terraform_dir }}'
-      workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | d('default') }}"
-      state: absent
+      # workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | d('default') }}"
+      state: present
+    environment:
+      TF_VAR_ssh_public_key: "{{ ssh_files_path }}/{{ ssh_publkey_name }}"
