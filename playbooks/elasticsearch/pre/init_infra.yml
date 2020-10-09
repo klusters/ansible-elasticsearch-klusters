@@ -1,0 +1,21 @@
+---
+
+- name: Init infra
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  roles:
+  - role: cloud-infra
+    vars:
+      state: present
+  
+
+- name: Check SSH availability
+  hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: Wait for system to become reachable
+    wait_for_connection:
+      timeout: 60

@@ -1,7 +1,5 @@
 ---
 
-- import_playbook: pre/terraform_apply.yml
-- import_playbook: pre/prepare.yml
-- import_playbook: pre/ssh.yml
+- import_playbook: pre/init_infra.yml
 
-- import_playbook: post/terraform_destroy.yml
+- import_playbook: post/clean_infra.yml

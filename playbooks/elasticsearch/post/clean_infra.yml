@@ -1,0 +1,12 @@
+---
+
+- name: Clean infra
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  roles:
+
+  - role: cloud-infra
+    vars:
+      state: absent
