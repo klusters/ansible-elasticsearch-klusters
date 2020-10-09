@@ -22,6 +22,7 @@ instances:
       network_tier: PREMIUM
     tags:
     - ssh-front
+    preemptible: true
 
   master:
     additional_disks:
@@ -54,6 +55,7 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    preemptible: true
 
   coordinator:
     additional_disks:
@@ -86,6 +88,7 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    preemptible: true
 
   data:
     additional_disks:
@@ -118,3 +121,4 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    preemptible: true
