@@ -52,4 +52,4 @@ jobs:
           terraform --version
           ansible --version
           ansible-galaxy install -f -r ansible_requirements.yml
-          ansible-playbook -i inventory/test playbooks/elasticsearch/kickstart.yml
+          ansible-playbook -i inventories/test playbooks/elasticsearch/kickstart.yml
