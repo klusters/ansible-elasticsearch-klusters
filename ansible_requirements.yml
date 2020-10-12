@@ -1,0 +1,11 @@
+---
+
+roles:
+  - src: git+https://github.com/klusters/ansible-role-cloud-infra.git
+    name: cloud-infra
+    version: 'main'
+
+collections:
+  - name: klusters.system
+    version: 1.2.0
+    source: https://galaxy.ansible.com
