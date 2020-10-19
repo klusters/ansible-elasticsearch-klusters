@@ -10,5 +10,16 @@ es_api_host: "{{ ansible_default_ipv4.address }}"
 
 es_plugins:
   - plugin: repository-gcs
+  - plugin: discovery-gce
 
 es_log_dir: "/var/log/elasticsearch"
+
+es_common_config:
+  node.name: "{{ ansible_fqdn }}"
+  network.host: _site_
+  cluster.name: "custom-cluster"
+  cluster.initial_master_nodes: "{{ groups['es_master'] | map('extract', hostvars, ['ansible_fqdn'])  | list }}"
+  discovery.seed_providers: gce
+  cloud.gce.project_id: "{{ lookup('env','GCLOUD_PROJECT') }}"
+  bootstrap.memory_lock: true
+  xpack.monitoring.enabled: true

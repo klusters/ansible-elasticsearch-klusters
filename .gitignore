@@ -1,2 +1,4 @@
 
 inventories/test/gce_instances.gcp.yml
+
+playbooks/elasticsearch/test.yml

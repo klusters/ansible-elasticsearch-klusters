@@ -9,6 +9,8 @@
   - role: cloud-infra
     vars:
       state: present
+      terraform_project_version: 'feat/gce_discovery'
+
   
 
 - name: Check SSH availability
