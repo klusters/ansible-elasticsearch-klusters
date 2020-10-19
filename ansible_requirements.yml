@@ -5,6 +5,9 @@ roles:
     name: cloud-infra
     version: 'main'
 
+  - name: elastic.elasticsearch
+    version: 7.9.2
+
 collections:
   - name: klusters.system
     version: 1.2.0

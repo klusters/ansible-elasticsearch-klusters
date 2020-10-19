@@ -1,0 +1,18 @@
+---
+
+default_fs_type: xfs
+
+dev_mapping:
+    - dev_name: /dev/sdb
+      mount_path: /var/log
+
+    - dev_name: /dev/sdc
+      mount_path: /data/01
+      mnt_opts: 'defaults,noatime,nofail'
+
+    - dev_name: /dev/sdd
+      mount_path: /data/02
+      mnt_opts: 'defaults,noatime,nofail'
+
+volume_groups: []
+logical_volumes: []

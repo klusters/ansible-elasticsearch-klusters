@@ -1,0 +1,19 @@
+---
+
+es_config:
+  network.host: _site_
+  cluster.name: "custom-cluster"
+  cluster.initial_master_nodes: "{{ groups['es_master'] | map('extract', hostvars, ['ansible_fqdn'])  | list }}"
+  discovery.seed_hosts: "{{ groups['es_master'] | map('extract', hostvars, ['ansible_fqdn'])  | list }}"
+  node.name: "{{ ansible_fqdn }}"
+  node.data: true
+  node.master: false
+  node.ingest: false 
+  node.ml: false
+  bootstrap.memory_lock: true
+  xpack.monitoring.enabled: true
+es_heap_size: 1g
+
+es_data_dirs:
+  - "/data/01"
+  - "/data/02"

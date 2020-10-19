@@ -7,7 +7,7 @@ instances:
     source_image_project: ubuntu-os-cloud
     disk_size_gb: 10
     instance_name: es-jump
-    machine_type: f1-micro
+    machine_type: e2-small
     network: default
     region: europe-west1
     subnetwork: subnet-01
@@ -23,13 +23,9 @@ instances:
     tags:
     - ssh-front
     preemptible: true
-
+    named_ports: []
   master:
     additional_disks:
-    - auto_delete: true
-      boot: false
-      disk_size_gb: 1
-      disk_type: pd-standard
     - auto_delete: true
       boot: false
       disk_size_gb: 1
@@ -42,7 +38,7 @@ instances:
     source_image_project: centos-cloud
     disk_size_gb: 20
     instance_name: es-master
-    machine_type: f1-micro
+    machine_type: e2-medium
     network: default
     region: europe-west1
     subnetwork: subnet-02
@@ -55,14 +51,15 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    - es-cluster
     preemptible: true
-
+    named_ports:
+    - name: es-http
+      port: 9200
+    - name: es-transport
+      port: 9300
   coordinator:
     additional_disks:
-    - auto_delete: true
-      boot: false
-      disk_size_gb: 1
-      disk_type: pd-standard
     - auto_delete: true
       boot: false
       disk_size_gb: 1
@@ -75,7 +72,7 @@ instances:
     source_image_project: centos-cloud
     disk_size_gb: 20
     instance_name: es-coordinator
-    machine_type: f1-micro
+    machine_type: e2-medium
     network: default
     region: europe-west1
     subnetwork: subnet-02
@@ -88,8 +85,13 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    - es-cluster
     preemptible: true
-
+    named_ports:
+    - name: es-http
+      port: 9200
+    - name: es-transport
+      port: 9300
   data:
     additional_disks:
     - auto_delete: true
@@ -108,7 +110,7 @@ instances:
     source_image_project: centos-cloud
     disk_size_gb: 20
     instance_name: es-data
-    machine_type: f1-micro
+    machine_type: e2-medium
     network: default
     region: europe-west1
     subnetwork: subnet-02
@@ -121,4 +123,10 @@ instances:
     access_config: []
     tags:
     - ssh-back
+    - es-cluster
     preemptible: true
+    named_ports:
+    - name: es-http
+      port: 9200
+    - name: es-transport
+      port: 9300

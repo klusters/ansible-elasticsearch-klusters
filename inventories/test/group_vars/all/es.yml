@@ -1,0 +1,14 @@
+---
+
+es_version: 7.6.2
+es_xpack_trial: true 
+es_enable_http_ssl: no
+es_enable_transport_ssl: no
+
+es_validate_certs: no
+es_api_host: "{{ ansible_default_ipv4.address }}"
+
+es_plugins:
+  - plugin: repository-gcs
+
+es_log_dir: "/var/log/elasticsearch"

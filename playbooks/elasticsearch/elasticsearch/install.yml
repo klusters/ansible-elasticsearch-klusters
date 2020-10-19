@@ -1,0 +1,10 @@
+---
+
+- name: Config Elasticsearch
+  hosts: all:!es_jump
+  gather_facts: yes
+  strategy: free
+
+  roles:
+
+  - role: elastic.elasticsearch
