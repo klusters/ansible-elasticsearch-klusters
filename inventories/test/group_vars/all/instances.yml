@@ -9,7 +9,7 @@ instances:
     disk_size_gb: 10
 
     instance_name: es-jump
-    machine_type: e2-small
+    machine_type: e2-highcpu-4
 
     region: europe-west1
     network: default
