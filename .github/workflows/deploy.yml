@@ -47,5 +47,6 @@ jobs:
         run: |
           terraform --version
           ansible --version
+          export ANSIBLE_FORKS=150
           ansible-galaxy install -f -r ansible_requirements.yml
           ansible-playbook -i inventories/test playbooks/elasticsearch/kickstart.yml
