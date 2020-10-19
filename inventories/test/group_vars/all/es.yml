@@ -20,6 +20,9 @@ es_common_config:
   cluster.name: "custom-cluster"
   cluster.initial_master_nodes: "{{ groups['es_master'] | map('extract', hostvars, ['ansible_fqdn'])  | list }}"
   discovery.seed_providers: gce
-  cloud.gce.project_id: "{{ lookup('env','GCLOUD_PROJECT') }}"
+  cloud:
+    gce:
+      project_id: "{{ lookup('env','GCLOUD_PROJECT') }}"
+      zone: ['europe-west1-b', 'europe-west1-c', 'europe-west1-d']
   bootstrap.memory_lock: true
   xpack.monitoring.enabled: true
