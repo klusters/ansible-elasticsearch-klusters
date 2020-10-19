@@ -4,7 +4,7 @@ default_fs_type: xfs
 
 dev_mapping:
     - dev_name: /dev/sdb
-      mount_path: /var/log
+      mount_path: /var/log/elasticsearch
 
     - dev_name: /dev/sdc
       mount_path: /data/01

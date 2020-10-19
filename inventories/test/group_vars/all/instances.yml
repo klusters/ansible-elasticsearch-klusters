@@ -3,128 +3,167 @@
 instances:
   jump:
     additional_disks: []
+
     source_image_family: ubuntu-minimal-2004-lts
     source_image_project: ubuntu-os-cloud
     disk_size_gb: 10
+
     instance_name: es-jump
-    machine_type: e2-small
-    network: default
+    machine_type: e2-highcpu-4
+
     region: europe-west1
+    network: default
     subnetwork: subnet-01
+
     count: 1
+    preemptible: true
+
     labels:
       createdby: iac
       app: elasticsearch
       environment: test
       role: jump
+
     access_config:
     - nat_ip: 
       network_tier: PREMIUM
+
     tags:
     - ssh-front
-    preemptible: true
+
     named_ports: []
+
   master:
     additional_disks:
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+
     source_image_family: centos-7
     source_image_project: centos-cloud
     disk_size_gb: 20
+
     instance_name: es-master
     machine_type: e2-medium
-    network: default
+
     region: europe-west1
+    network: default
     subnetwork: subnet-02
+
     count: 2
+    preemptible: true
+
     labels:
       createdby: iac
       app: elasticsearch
       environment: test
       role: master
+
     access_config: []
+
     tags:
     - ssh-back
     - es-cluster
-    preemptible: true
+
     named_ports:
     - name: es-http
       port: 9200
     - name: es-transport
       port: 9300
+
   coordinator:
     additional_disks:
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+
     source_image_family: centos-7
     source_image_project: centos-cloud
     disk_size_gb: 20
+
     instance_name: es-coordinator
     machine_type: e2-medium
-    network: default
+
     region: europe-west1
+    network: default
     subnetwork: subnet-02
+
     count: 2
+    preemptible: true
+
     labels:
       createdby: iac
       app: elasticsearch
       environment: test
       role: coordinator
+
     access_config: []
+
     tags:
     - ssh-back
     - es-cluster
-    preemptible: true
+
     named_ports:
     - name: es-http
       port: 9200
     - name: es-transport
       port: 9300
+
   data:
     additional_disks:
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+    
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+    
     - auto_delete: true
       boot: false
       disk_size_gb: 1
       disk_type: pd-standard
+
     source_image_family: centos-7
     source_image_project: centos-cloud
     disk_size_gb: 20
+
     instance_name: es-data
     machine_type: e2-medium
-    network: default
+
     region: europe-west1
+    network: default
     subnetwork: subnet-02
+
     count: 3
+    preemptible: true
+
     labels:
       createdby: iac
       app: elasticsearch
       environment: test
       role: data
+
     access_config: []
+
     tags:
     - ssh-back
     - es-cluster
-    preemptible: true
+
     named_ports:
     - name: es-http
       port: 9200

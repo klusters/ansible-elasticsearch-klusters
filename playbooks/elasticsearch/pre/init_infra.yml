@@ -9,7 +9,7 @@
   - role: cloud-infra
     vars:
       state: present
-  
+      terraform_project_version: '1.0.0'
 
 - name: Check SSH availability
   hosts: all
@@ -18,5 +18,5 @@
   tasks:
   - name: Wait for system to become reachable
     wait_for_connection:
-      timeout: 60
-      delay: 30
+      timeout: 90
+      delay: 15
