@@ -3,7 +3,7 @@
 es_coordinator_config:
   node.data: false
   node.master: true
-  voting_only: true
+  node.voting_only: true
   node.ingest: true 
   node.ml: false 
 

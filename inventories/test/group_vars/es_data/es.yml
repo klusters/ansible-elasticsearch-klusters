@@ -3,6 +3,7 @@
 es_data_config:
   node.data: true
   node.master: false
+  node.voting_only: false
   node.ingest: false 
   node.ml: false
 
