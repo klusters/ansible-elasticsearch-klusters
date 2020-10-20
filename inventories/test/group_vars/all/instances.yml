@@ -64,6 +64,7 @@ instances:
       app: elasticsearch
       environment: test
       role: master
+      purpose: cluster
 
     access_config: []
 
@@ -108,6 +109,7 @@ instances:
       app: elasticsearch
       environment: test
       role: coordinator
+      purpose: cluster
 
     access_config: []
 
@@ -157,6 +159,7 @@ instances:
       app: elasticsearch
       environment: test
       role: data
+      purpose: cluster
 
     access_config: []
 
