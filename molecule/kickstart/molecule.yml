@@ -26,4 +26,5 @@ provisioner:
     - --inventory=../../inventories/test/gce_instances.gcp.yml
   inventory:
     links:
+      hosts: ../../inventories/test/
       group_vars: ../../inventories/test/group_vars/

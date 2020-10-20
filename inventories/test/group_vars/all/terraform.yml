@@ -1,3 +1,4 @@
 ---
 
 terraform_workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | default('elasticsearch_test', True) }}"
+terraform_bin: "{{ lookup('env','TERRAFORM_CLI_PATH') + '/terraform-bin' }}"
