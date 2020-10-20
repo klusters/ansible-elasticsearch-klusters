@@ -13,7 +13,8 @@ lint: |
   ansible-lint .
 
 platforms:
-- name: 'dummy_mandatory_section'
+- name: 'mandatory_section'
+  groups: ['ignore_me']
 
 provisioner:
   name: ansible

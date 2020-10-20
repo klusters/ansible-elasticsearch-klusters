@@ -1,7 +1,7 @@
 ---
 
 - name: Config Elasticsearch
-  hosts: all:!es_jump
+  hosts: es_coordinator, es_data, es_master
   gather_facts: yes
   strategy: free
 
