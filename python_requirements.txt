@@ -1,6 +1,4 @@
-ansible>=2.10.0
 ansible-lint
 google-auth
 jmespath
-requests
 molecule
