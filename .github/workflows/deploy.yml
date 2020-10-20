@@ -47,7 +47,4 @@ jobs:
         run: |
           terraform --version
           ansible --version
-          export ANSIBLE_FORKS=150
-          export MOLECULE_SCENARIO_NAME=kickstart
-          ansible-galaxy install -f -r ansible_requirements.yml
-          ansible-playbook -i inventories/test playbooks/elasticsearch/kickstart.yml
+          molecule test -s kickstart

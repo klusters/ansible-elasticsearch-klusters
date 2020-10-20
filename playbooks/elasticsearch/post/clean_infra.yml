@@ -10,4 +10,3 @@
   - role: cloud-infra
     vars:
       state: absent
-      terraform_project_version: '1.0.0'

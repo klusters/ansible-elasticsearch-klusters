@@ -1,7 +1,7 @@
 ---
 
 - name: Config infra
-  hosts: all:!es_jump
+  hosts: es_cluster
   gather_facts: no
   strategy: free
 
@@ -19,6 +19,9 @@
   roles:
 
   - role: klusters.system.etc_hosts
+    vars:
+      role_etc_hosts_group: es_cluster
+
   - role: klusters.system.entropy
   - role: klusters.system.filesystems
   - role: klusters.system.tcp_offload

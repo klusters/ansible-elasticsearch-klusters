@@ -7,3 +7,5 @@ ssh_publkey_name: "{{ lookup('env','GCLOUD_PROJECT') }}_ansible_sa.pub"
 ssh_config_name: "{{ lookup('env','GCLOUD_PROJECT') }}_ansible_sa.config"
 
 ansible_ssh_common_args: "-F {{ ssh_files_path }}/{{ ssh_config_name }}"
+
+jump_group: es_jump

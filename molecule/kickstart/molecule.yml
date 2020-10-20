@@ -1,0 +1,31 @@
+---
+
+dependency:
+  name: galaxy
+  options:
+    role-file: ansible_requirements.yml
+
+driver:
+  name: delegated
+
+lint: |
+  yamllint .
+  ansible-lint .
+
+platforms:
+- name: 'mandatory_section'
+  groups: ['ignore_me']
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../../playbooks/elasticsearch/elasticsearch/install.yml
+    create: ../../playbooks/elasticsearch/pre/init_infra.yml
+    destroy: ../../playbooks/elasticsearch/post/clean_infra.yml
+    prepare: ../../playbooks/elasticsearch/pre/config_infra.yml
+  ansible_args:
+    - --inventory=../../inventories/test/gce_instances.gcp.yml
+  inventory:
+    links:
+      hosts: ../../inventories/test/
+      group_vars: ../../inventories/test/group_vars/
