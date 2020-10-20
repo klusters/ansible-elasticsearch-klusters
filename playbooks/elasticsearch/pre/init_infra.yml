@@ -9,7 +9,6 @@
   - role: cloud-infra
     vars:
       state: present
-      terraform_project_version: 'fix/terraform_path'
 
 - name: Check SSH availability
   hosts: all
