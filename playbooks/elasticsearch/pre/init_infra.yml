@@ -11,7 +11,7 @@
       state: present
 
 - name: Check SSH availability
-  hosts: es_coordinator, es_data, es_master
+  hosts: es_cluster
   gather_facts: no
 
   tasks:

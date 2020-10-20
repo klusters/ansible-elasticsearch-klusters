@@ -1,7 +1,7 @@
 ---
 
 - name: Config Elasticsearch
-  hosts: es_coordinator, es_data, es_master
+  hosts: es_cluster
   gather_facts: yes
   strategy: free
 
