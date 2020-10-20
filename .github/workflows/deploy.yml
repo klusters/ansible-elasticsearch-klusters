@@ -47,4 +47,4 @@ jobs:
         run: |
           terraform --version
           ansible --version
-          molecule --debug test -s kickstart
+          molecule test -s kickstart
