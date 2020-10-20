@@ -3,7 +3,7 @@
 roles:
   - src: git+https://github.com/klusters/ansible-role-cloud-infra.git
     name: cloud-infra
-    version: '1.0.2'
+    version: 'fix/terraform_path'
 
   - name: elastic.elasticsearch
     version: 7.9.2
