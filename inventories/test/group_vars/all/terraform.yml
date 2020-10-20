@@ -1,0 +1,3 @@
+---
+
+terraform_workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | default('elasticsearch_test', True) }}"

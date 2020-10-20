@@ -47,5 +47,4 @@ jobs:
         run: |
           terraform --version
           ansible --version
-          export ANSIBLE_FORKS=150
-          molecule test -s kickstart
+          molecule --debug test -s kickstart
