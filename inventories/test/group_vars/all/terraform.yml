@@ -1,4 +1,11 @@
 ---
 
-terraform_workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | default('elasticsearch_test', True) }}"
+terraform_dir: "{{ lookup('env','HOME') }}/terraform"
 terraform_bin: "{{ lookup('env','TERRAFORM_CLI_PATH') + '/terraform-bin' }}"
+terraform_workspace: "{{ lookup('env','MOLECULE_SCENARIO_NAME') | default('elasticsearch_test', True) }}"
+
+terraform_project_repo: 'https://github.com/klusters/terraform-gcp-infra'
+terraform_project_version: '1.0.1'
+
+terraform_env_vars:
+  TF_VAR_ssh_public_key: "{{ ssh_files_path }}/{{ ssh_publkey_name }}"
