@@ -3,7 +3,7 @@
 - name: Init infra
   hosts: localhost
   connection: local
-  gather_facts: no
+  gather_facts: yes
 
   roles:
   - role: cloud-infra
