@@ -4,6 +4,7 @@ ansible-elasticsearch-klusters
 ### Environment Variables
 
 GOOGLE_APPLICATION_CREDENTIALS: GCP Service Account Key file (path)
+
 GCLOUD_PROJECT : The GCP Project ID to use
 
 Examples :
