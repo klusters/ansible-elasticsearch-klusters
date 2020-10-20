@@ -2,3 +2,4 @@ ansible-lint
 google-auth
 jmespath
 molecule
+wheel
