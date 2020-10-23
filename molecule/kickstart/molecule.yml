@@ -20,6 +20,7 @@ provisioner:
   name: ansible
   playbooks:
     converge: ../../playbooks/elasticsearch/elasticsearch/install.yml
+    verify: ../../playbooks/elasticsearch/elasticsearch/check.yml
     create: ../../playbooks/elasticsearch/pre/init_infra.yml
     destroy: ../../playbooks/elasticsearch/post/clean_infra.yml
     prepare: ../../playbooks/elasticsearch/pre/config_infra.yml
