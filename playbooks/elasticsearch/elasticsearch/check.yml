@@ -1,7 +1,7 @@
 ---
 
 - name: Config Elasticsearch
-  hosts: es_coordinator | first
+  hosts: "{{ groups['es_coordinator'] | first }}"
   gather_facts: yes
 
   roles:
