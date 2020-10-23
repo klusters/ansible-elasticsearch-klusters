@@ -1,0 +1,11 @@
+---
+
+- name: Config Elasticsearch
+  hosts: es_coordinator | first
+  gather_facts: yes
+
+  roles:
+
+  - role: klusters.elasticsearch.check_health
+    vars:
+      es_api_host: '{{ ansible_fqdn }}'

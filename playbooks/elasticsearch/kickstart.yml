@@ -4,5 +4,6 @@
 - import_playbook: pre/config_infra.yml
 
 - import_playbook: elasticsearch/install.yml
+- import_playbook: elasticsearch/check.yml
 
 - import_playbook: post/clean_infra.yml
