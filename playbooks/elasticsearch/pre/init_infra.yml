@@ -6,6 +6,7 @@
   gather_facts: no
 
   roles:
+
   - role: cloud-infra
     vars:
       state: present
@@ -15,6 +16,7 @@
   gather_facts: no
 
   tasks:
+
   - name: Wait for system to become reachable
     wait_for_connection:
       timeout: 90

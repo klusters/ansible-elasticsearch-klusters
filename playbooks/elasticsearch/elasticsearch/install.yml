@@ -3,7 +3,6 @@
 - name: Config Elasticsearch
   hosts: es_cluster
   gather_facts: yes
-  strategy: free
 
   roles:
 
