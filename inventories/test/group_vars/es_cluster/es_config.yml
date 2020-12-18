@@ -6,7 +6,7 @@ es_enable_http_ssl: no
 es_enable_transport_ssl: no
 
 es_validate_certs: no
-es_api_host: "{{ ansible_default_ipv4.address }}"
+es_api_host: "{{ ansible_fqdn }}"
 
 es_plugins:
   - plugin: repository-gcs
