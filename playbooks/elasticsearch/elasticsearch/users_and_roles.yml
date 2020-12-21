@@ -1,0 +1,11 @@
+---
+
+- name: Manage Elasticsearch users & roles
+  hosts: "{{ groups['es_coordinator'] | first }}"
+  gather_facts: yes
+
+  roles:
+
+  - role: klusters.elasticsearch.users_and_roles
+
+...
