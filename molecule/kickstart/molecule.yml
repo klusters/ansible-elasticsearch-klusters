@@ -3,7 +3,7 @@
 dependency:
   name: galaxy
   options:
-    role-file: ansible_requirements.yml
+    role-file: ../../inventories/gcp/molecule_test/requirements/ansible_requirements.yml
 
 driver:
   name: delegated
@@ -19,14 +19,14 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
+    create: ../../playbooks/elasticsearch/pre/init_infra.yml
+    prepare: ../../playbooks/elasticsearch/pre/config_infra.yml
     converge: ../../playbooks/elasticsearch/elasticsearch/install.yml
     verify: ../../playbooks/elasticsearch/elasticsearch/check.yml
-    create: ../../playbooks/elasticsearch/pre/init_infra.yml
     destroy: ../../playbooks/elasticsearch/post/clean_infra.yml
-    prepare: ../../playbooks/elasticsearch/pre/config_infra.yml
   ansible_args:
-    - --inventory=../../inventories/test/gce_instances.gcp.yml
+    - --inventory=../../inventories/gcp/molecule_test/gce_instances.gcp.yml
   inventory:
     links:
-      hosts: ../../inventories/test/
-      group_vars: ../../inventories/test/group_vars/
+      hosts: ../../inventories/gcp/molecule_test/
+      group_vars: ../../inventories/gcp/molecule_test/group_vars/

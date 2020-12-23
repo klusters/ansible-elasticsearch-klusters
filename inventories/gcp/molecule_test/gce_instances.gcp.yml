@@ -1,0 +1,33 @@
+plugin: gcp_compute
+
+projects:
+  - github-ci-290307
+
+filters:
+  - labels.createdby = "iac"
+  - labels.environment = "test"
+  - labels.app = "elasticsearch"
+
+keyed_groups:
+  # WILL CREATE GROUPS NAMED "es_<role>" (e.g. es_master)
+  - prefix: es
+    key: labels.role
+
+auth_kind: serviceaccount
+service_account_file: /Users/afathallah/Downloads/github-ci-290307-9f3fbd5aba4a.json
+
+scopes:
+  - 'https://www.googleapis.com/auth/cloud-platform'
+  - 'https://www.googleapis.com/auth/compute.readonly'
+
+groups:
+  centos_7: "'centos-7' in disks[0].licenses[0]"
+  centos_8: "'centos-8' in disks[0].licenses[0]"
+  ubuntu_1804_lts: "'ubuntu-1804' in disks[0].licenses[0]"
+  ubuntu_2004_lts: "'ubuntu-2004' in disks[0].licenses[0]"
+
+hostnames:
+  - name
+
+compose:
+  ansible_host: networkInterfaces[0].networkIP
