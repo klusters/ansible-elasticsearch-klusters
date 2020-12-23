@@ -1,0 +1,25 @@
+---
+
+es_roles:
+  native:
+    read_metier_1:
+      cluster: ['']
+      indices:
+      - names: 'index-metier-1-*'
+        privileges:
+        - read
+    read_metier_2:
+      cluster: ['']
+      indices:
+      - names: 'index-metier-2-*'
+        privileges:
+        - read
+    write_metiers:
+      cluster: ['']
+      indices:
+      - names: 'index-metier-*'
+        privileges:
+        - create_index
+        - write
+
+...

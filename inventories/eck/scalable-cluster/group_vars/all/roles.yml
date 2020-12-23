@@ -1,0 +1,15 @@
+---
+
+es_roles:
+  native:
+    sample_role_2:
+      cluster: ['monitor']
+      indices:
+      - names: 'dummy-index-*'
+        privileges:
+        - read
+        # query:
+        #   term:
+        #     k8s_label1: app_name
+
+...

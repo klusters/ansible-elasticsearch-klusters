@@ -1,0 +1,25 @@
+---
+
+## k8s secrets limitation : k8s secrets name cannot contain '_'
+## '_' in username will be replaced by '-', so username in k8s secrets will be like : username | regex_replace('_', '-')
+
+es_users:
+  native:
+    metier_1_user_1:
+      password: '{% if es_cluster_name + "-es-metier-1-user-1" in found_k8s_secrets %}{{ lookup("k8s", kind="Secret", namespace=es_k8s_namespace, resource_name=es_cluster_name + "-es-metier-1-user-1")["data"]["user_password"] | b64decode }}{% else %}{{ lookup("password", "/dev/null chars=ascii_letters,digits" ) }}{% endif %}'
+      roles:
+      - read_metier_1
+    metier_1_user_2:
+      password: '{% if es_cluster_name + "-es-metier-1-user-2" in found_k8s_secrets %}{{ lookup("k8s", kind="Secret", namespace=es_k8s_namespace, resource_name=es_cluster_name + "-es-metier-1-user-2")["data"]["user_password"] | b64decode }}{% else %}{{ lookup("password", "/dev/null chars=ascii_letters,digits" ) }}{% endif %}'
+      roles:
+      - read_metier_1
+    metier_2_user_1:
+      password: '{% if es_cluster_name + "-es-metier-2-user-1" in found_k8s_secrets %}{{ lookup("k8s", kind="Secret", namespace=es_k8s_namespace, resource_name=es_cluster_name + "-es-metier-2-user-1")["data"]["user_password"] | b64decode }}{% else %}{{ lookup("password", "/dev/null chars=ascii_letters,digits" ) }}{% endif %}'
+      roles:
+      - read_metier_2
+    writer_metiers:
+      password: '{% if es_cluster_name + "-es-writer-metiers" in found_k8s_secrets %}{{ lookup("k8s", kind="Secret", namespace=es_k8s_namespace, resource_name=es_cluster_name + "-es-writer-metiers")["data"]["user_password"] | b64decode }}{% else %}{{ lookup("password", "/dev/null chars=ascii_letters,digits" ) }}{% endif %}'
+      roles:
+      - write_metiers
+
+...
