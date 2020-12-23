@@ -15,11 +15,13 @@ export GCLOUD_PROJECT=ci-123456
 
 ### Dependencies
 
+Depencies are listed in each inventory folder
+
 Install dependencies :
 ```bash
-pip install -r python_requirements.txt
+pip install -r <my_inventory>/requirements/python_requirements.txt
 
-ansible-galaxy install -f -r ansible_requirements.yml
+ansible-galaxy install -f -r <my_inventory>/requirements/ansible_requirements.yml
 ```
 
 ### Execute playbook
