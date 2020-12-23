@@ -3,3 +3,4 @@ google-auth
 jmespath
 molecule
 wheel
+openshift
